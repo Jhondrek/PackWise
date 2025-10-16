@@ -1,0 +1,14 @@
+:root{
+    /* colors */
+    --primary-light-font-color: white;
+    --secondary-dark-font-color: #345474;
+    --blue-background: #00919f;
+    --light-background: #F5F8FB;
+    --primary-color: #4890E7;
+    --call-to-action-color: #FCD481;
+    --blur-gray: rgba(88, 88, 88, 0.2);
+
+    /* font */
+    --font-size-primary-mobile: 1.55rem;
+
+}

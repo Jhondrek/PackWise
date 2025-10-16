@@ -1,5 +1,9 @@
-.a{
-    font-size: 2em;
-    color:hotpink;
-    font-weight: 500;
+.form{
+    display: flex;
+    flex-direction: column;
+    margin-top: 90px;
+}
+
+.form__travelAreaInput{
+    margin-top: 20px;
 }

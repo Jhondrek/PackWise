@@ -3,3 +3,9 @@
     color: green;
     font-weight: 500;
 }
+
+header{
+    display: none;
+    color: var(--primary-font-color);
+}
+
