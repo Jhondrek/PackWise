@@ -19,7 +19,7 @@ export default function Home(){
                     <h2 className={styles.formContainer__title}>Ready</h2>
                     <h2 className={styles[`formContainer__title--secondary`]}>For your next adventure?</h2>
                     <SearchForm/>
-                    <button className={styles.formContainer__button}>Plan my trip</button>
+                    
                 </section>
             </section>
             {/* <ResultCard/>
