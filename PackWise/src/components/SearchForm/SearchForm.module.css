@@ -2,6 +2,22 @@
     display: flex;
     flex-direction: column;
     margin-top: 90px;
+    align-items: center;
+}
+
+.form__locationsCont{
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    transition: top 2s ease-in-out;
+    position: fixed;
+    top: 55%;
+}
+
+.form__locationsCont.completed{
+    position: fixed;
+    bottom: auto;
+    top: -100%;
 }
 
 .form__travelAreaInput{
@@ -16,3 +32,44 @@
    margin: auto;
    width: fit-content;
 }
+
+.form__datesCont, .form__TravelerDataCont{
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    position: fixed;
+    bottom: -100%;
+    transition: bottom 2s ease-in-out ;
+    width: 100%;
+}
+
+.form__datesCont.visible, .form__TravelerDataCont.visible {
+    display: flex;
+    bottom: 39%;
+}
+
+
+.form__datesCont.completed{
+    position: fixed;
+    bottom: auto;
+    bottom: 200%;
+}
+
+.form__dateCont:nth-of-type(2){
+    margin-top: 20px;
+}
+
+.form__TravelerDataCont :global(.travelerData):nth-of-type(2) input {
+  margin-top: 20px;
+}
+
+:global(.travelerData) input{
+    width: 22px;
+}
+
+.form__dateCont{
+    display:flex;
+    gap: 10px;
+}
+
+
