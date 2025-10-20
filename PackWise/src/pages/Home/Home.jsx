@@ -18,9 +18,9 @@ export default function Home(){
                 <section className={styles.formContainer__blurBackground}>
                     <h2 className={styles.formContainer__title}>Ready</h2>
                     <h2 className={styles[`formContainer__title--secondary`]}>For your next adventure?</h2>
-                    <SearchForm/>
-                    
                 </section>
+                <SearchForm/>
+
             </section>
             {/* <ResultCard/>
             <Footer/> */}

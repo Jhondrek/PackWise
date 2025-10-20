@@ -1,5 +1,7 @@
 import style from "./SearchForm.module.css"
 import { useState } from "react";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
+import { faCircleUp, faCircleDown } from "@fortawesome/free-solid-svg-icons";
 
 export default function SearchForm(){
 
@@ -34,10 +36,13 @@ console.log(isSecondElementEntered)
     return(
 
         <form onSubmit={handleSubmit} className={style.form}>
-
+            <FontAwesomeIcon icon={faCircleUp} className={style.form__CircleUpIcon}/>
             <section className={`${style.form__locationsCont} ${isSecondElementEntered[0] && style.completed}`}>
-                <input type="text" id="country"  placeholder="Country" onChange={(e)=>setFormInformation(e.target.value)} />
-                <input onBlur={ !isSecondElementEntered[0] ? handleOnBlur : undefined} onKeyDown={(e)=> !isSecondElementEntered[0] && handleEnterKey(e)} className={style.form__travelAreaInput} /*ref={travelAreaRef}*/ type="text" placeholder="Travel Area" onChange={(e)=>setFormInformation(e.target.value)}/>
+                                
+
+                <input type="text" id="country"  placeholder="Origin country" onChange={(e)=>setFormInformation(e.target.value)} />
+                <input type="text" id="country"  placeholder="Arriving country" onChange={(e)=>setFormInformation(e.target.value)} />
+                <input onBlur={ !isSecondElementEntered[0] ? handleOnBlur : undefined} onKeyDown={(e)=> !isSecondElementEntered[0] && handleEnterKey(e)} className={style.form__travelAreaInput}  type="text" placeholder="Place to explore" onChange={(e)=>setFormInformation(e.target.value)}/>
             </section>
 
            <section className={`${style.form__datesCont} ${ isSecondElementEntered[0] && style.visible} ${ isSecondElementEntered[1] && style.completed}`}>
@@ -52,16 +57,18 @@ console.log(isSecondElementEntered)
             </section>
 
             <section className={`${style.form__TravelerDataCont} ${isSecondElementEntered[1] && style.visible}`}>
-                <div className="travelerData">
+                <div className={style.form__TravelerDataCont__travelerData}>
                     <label htmlFor="">Number of travelers</label>
                     <input type="number"/>
                 </div>
 
-                <div className="travelerData">
+                <div className={style.form__TravelerDataCont__travelerData}>
                     <input type="number"/>
-                    <label htmlFor="">Travel Budget per person</label>
+                    <label htmlFor="">USD budget per person</label>
                 </div>
             </section>
+
+            <FontAwesomeIcon icon={faCircleDown} className={style.form__CircleDownIcon}/>
 
             <button className={style.formContainer__button}>Plan my trip</button>
         </form>
