@@ -2,21 +2,40 @@
     display: flex;
     flex-direction: column;
     align-items: center;
+    justify-content: center;
     position: fixed;
+    margin-top: 70%;
+}
+
+/* Move up/down in form buttons */
+
+.form__CircleUpIcon{
+    font-size: 1px;
+    pointer-events: none;
+    transition: font-size 1s ease-in-out;
+    margin-bottom: 20px;
+}
+
+.form__CircleUpIcon.visible{
+    font-size: 25px;
+    pointer-events:auto;
+
 }
 
 .form__CircleDownIcon{
-    position: fixed;
-    top: 75%;
+    font-size: 25px;
+    margin-top: 20px;
+    pointer-events: auto;
+    transition: font-size 1s ease-in-out;
 }
 
-.form__CircleUpIcon{
-    position: fixed;
-    top: 40.5%;
+.form__CircleDownIcon.hidden{
+    font-size: 1px;
+    pointer-events: none;
 }
+
 
 .form__CircleDownIcon, .form__CircleUpIcon{
-    font-size: 25px;
     background: var(--blur-gray-plus);
     border-radius: var(--border-radius);
     padding: 7px;
@@ -46,56 +65,57 @@
   }
 } */
 
+/* Form locations */
+
 .form__locationsCont{
     display: flex;
     align-items: center;
     flex-direction: column;
-    transition: top 2s ease-in-out;
-    position: fixed;
-    top: 48%;
-    gap: 40px
+    gap: 40px;
+    transform: translateY(0%);
+    opacity: 1;
+    transition: transform 2s ease-in-out, opacity 1.5s ease-in-out;
+    visibility: visible;
+    position: static;
 }
 
-.form__locationsCont.completed{
-    position: fixed;
-    bottom: auto;
-    top: -100%;
-}
+
 
 .form__locationsCont input{
     text-align: center;
 }
 
-.formContainer__button{
-   position:fixed;
-   bottom:50px;
-   left: 0;
-   right: 0;
-   margin: auto;
-   width: fit-content;
-}
+/* Dates and traveler data */
 
 .form__datesCont, .form__TravelerDataCont{
+    
+    position: absolute; 
+    margin: auto;
+    width: 300px;
+
     display: flex;
     align-items: center;
     flex-direction: column;
-    position: fixed;
-    bottom: -100%;
-    transition: bottom 2s ease-in-out ;
-    width: 100%;
+    
+    opacity: 0;
     gap: 40px;
+    transform: translateY(400px);
+    transition: transform 1.5s ease-in-out, opacity 0.6s ease-in-out;
+    
 }
 
 .form__datesCont.visible, .form__TravelerDataCont.visible {
-    display: flex;
-    bottom: 32%;
+    position:static;
+    visibility: visible;
+    transform: translateY(0%);
+    opacity: 1;
+
 }
 
 
 .form__datesCont.completed{
-    position: fixed;
-    bottom: auto;
-    bottom: 200%;
+    transform: translateY(-400px);
+    opacity: 0;
 }
 
 .form__TravelerDataCont__travelerData input{
@@ -105,6 +125,12 @@
 .form__dateCont{
     display:flex;
     gap: 10px;
+}
+
+.form__locationsCont.completed, .form__datesCont.completed{
+    transform: translateY(-400px);
+    opacity: 0;
+    position: absolute;
 }
 
 .form__TravelerDataCont__travelerData{
@@ -137,3 +163,26 @@
     font-weight: bolder;
 }
 
+
+/* Form button */
+
+.formContainer__button{
+    background: var(--gray);
+    color: white;
+    font-family: var(--font-family);
+    font-size: var(--font-size);
+    padding: 10px 20px;
+    font-weight: 500;
+    border-radius: var(--border-radius);
+    box-shadow: 0 0 20px -5px black;
+    border: 1px gray solid
+}
+
+.formContainer__button{
+   position:fixed;
+   bottom:5%;
+   left: 0;
+   right: 0;
+   margin: auto;
+   width: fit-content;
+}

@@ -6,16 +6,52 @@ import { faCircleUp, faCircleDown } from "@fortawesome/free-solid-svg-icons";
 export default function SearchForm(){
 
     const [formInformation, setFormInformation] = useState("")
-    const [isSecondElementEntered, setIsSecondElementEntered] = useState([])
+    const [isSecondElementEntered, setIsSecondElementEntered] = useState([false, false])
     
     function handleSubmit(event){
         event.preventDefault()
         console.log("handleSubmit triggered", formInformation)
     }
 
+
+    //back button
+
+    function showlLastInputs(){
+        setIsSecondElementEntered((prev)=>{
+
+            const newPrev = [...prev]
+        
+           for (let i = newPrev.length -1; i >=0 ; i--) {
+                if (newPrev[i] === true) {
+                    newPrev[i] = false
+                    break
+                }
+            }
+            return newPrev
+        }
+        
+         )
+    }
+
+    function showNextInputPairs(){
+        setIsSecondElementEntered((prev)=>{
+
+            const newPrev = [...prev]
+        
+           for (let i = 0; i < newPrev.length; i++) {
+                if (newPrev[i] === false) {
+                    newPrev[i] = true
+                    break
+                }
+            }
+            return newPrev
+        })
+    }
+
+    
+
     function handleOnBlur(event){
         showNextInputPairs()
-        console.log(isSecondElementEntered)
 
     }
 
@@ -27,16 +63,17 @@ export default function SearchForm(){
         }
     }
 
-    function showNextInputPairs(){
-        setIsSecondElementEntered((prev)=>[...prev, true])
-        console.log("this has been triggered")
-    }
+
+
+    
 
 console.log(isSecondElementEntered)
+
     return(
 
         <form onSubmit={handleSubmit} className={style.form}>
-            <FontAwesomeIcon icon={faCircleUp} className={style.form__CircleUpIcon}/>
+            <FontAwesomeIcon icon={faCircleUp} className={`${style.form__CircleUpIcon} ${isSecondElementEntered[0]  ? style.visible  : undefined}`} onClick={()=>{isSecondElementEntered[0] && showlLastInputs()}} />
+           
             <section className={`${style.form__locationsCont} ${isSecondElementEntered[0] && style.completed}`}>
                                 
 
@@ -68,9 +105,9 @@ console.log(isSecondElementEntered)
                 </div>
             </section>
 
-            <FontAwesomeIcon icon={faCircleDown} className={style.form__CircleDownIcon}/>
+            <FontAwesomeIcon icon={faCircleDown} className={`${style.form__CircleDownIcon} ${isSecondElementEntered[1] && style.hidden}`} onClick={()=>showNextInputPairs()}/>
 
-            <button className={style.formContainer__button}>Plan my trip</button>
+            <button className={style.formContainer__button}>Plan My Trip</button>
         </form>
     )
 }                                             

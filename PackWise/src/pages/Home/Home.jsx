@@ -11,6 +11,7 @@ export default function Home(){
     return (
         <main>
             <Header/>
+            
             <section className={styles.formContainer}>
                 <video autoPlay loop muted className={styles.formContainer__Backgroundvideo}>
                     <source src={backgroundVideo} type="video/mp4" />
