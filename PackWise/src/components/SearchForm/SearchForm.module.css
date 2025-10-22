@@ -71,7 +71,7 @@
     display: flex;
     align-items: center;
     flex-direction: column;
-    gap: 40px;
+    gap: 30px;
     transform: translateY(0%);
     opacity: 1;
     transition: transform 2s ease-in-out, opacity 1.5s ease-in-out;
@@ -96,9 +96,11 @@
     display: flex;
     align-items: center;
     flex-direction: column;
+    flex-wrap: wrap;
+    
     
     opacity: 0;
-    gap: 40px;
+    gap: 30px;
     transform: translateY(400px);
     transition: transform 1.5s ease-in-out, opacity 0.6s ease-in-out;
     
@@ -137,9 +139,8 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    gap: 15px;
-    color: green;
     width: 100%;
+    gap: 15px;
 }
 
 .form__TravelerDataCont__travelerData label{
@@ -170,13 +171,22 @@
     background: var(--gray);
     color: white;
     font-family: var(--font-family);
-    font-size: var(--font-size);
     padding: 10px 20px;
     font-weight: 500;
     border-radius: var(--border-radius);
     box-shadow: 0 0 20px -5px black;
-    border: 1px gray solid
+    border: 1px gray solid;
+    font-size: 1px;
+    opacity: 0;
+    transition: font-size 1s ease-in-out, opacity 0.55s ease-in-out;
 }
+
+.formContainer__button.visible{
+    font-size: var(--font-size-small) ;
+    opacity: 1;
+}
+
+
 
 .formContainer__button{
    position:fixed;
@@ -185,4 +195,10 @@
    right: 0;
    margin: auto;
    width: fit-content;
+}
+
+.form__error{
+    height: 1rem;
+    padding: 0px;
+    margin: 0px;
 }
