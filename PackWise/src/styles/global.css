@@ -16,6 +16,9 @@
   box-sizing: border-box;
 }
 
+html, body {
+  overflow-x: hidden;
+}
 
 
 body, p, h1,h2,h3,h4,h5 {

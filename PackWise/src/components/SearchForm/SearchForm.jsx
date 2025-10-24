@@ -10,7 +10,7 @@ export default function SearchForm(){
 
     //React-Hook-Form validation
 
-    const{register, handleSubmit, watch, trigger, clearErrors, formState: {errors}} = useForm({defaultValues:{
+    const{register, handleSubmit, trigger, clearErrors, formState: {errors}} = useForm({defaultValues:{
         originCountry:"",
         arrivingCountry:"",
         placeToExplore:"",
@@ -21,8 +21,6 @@ export default function SearchForm(){
     },
 
 })
-
-    console.log(watch())
       
     function submitForm(data){
         console.log("handleSubmit triggered", errors)
@@ -50,23 +48,20 @@ export default function SearchForm(){
         const firstInputSection = await trigger(["originCountry", "arrivingCountry", "placeToExplore"])
         const secondInputSection = await trigger(["startDate", "endDate"])
         const thirdInputSection = await trigger(["numberOfTravelers", "USDBudgetPerPerson"])
-        console.log(firstInputSection)
-        // Si estás en la primera parte del formulario
-  if (formProgressState[0] === false) {
-    return firstInputSection;
-  }
 
-  // Si estás en la segunda parte del formulario
-  if (formProgressState[0] === true && formProgressState[1] === false) {
-    return secondInputSection;
-  }
+        if (formProgressState[0] === false) {
+            return firstInputSection;
+        }
 
-  // Si estás en la tercera parte
-  if (formProgressState[1] === true) {
-    return thirdInputSection;
-  }
+        if (formProgressState[0] === true && formProgressState[1] === false) {
+            return secondInputSection;
+        }
 
-  return false;
+        if (formProgressState[1] === true) {
+            return thirdInputSection;
+        }
+
+        return false;
     }
 
     //back button
@@ -191,6 +186,7 @@ console.log(formProgressState)
             <button className={`${style.formContainer__button} ${formProgressState[1]=== true && style.visible }`}>Plan My Trip</button> 
 
         </form>
+
     )
 }                                             
 

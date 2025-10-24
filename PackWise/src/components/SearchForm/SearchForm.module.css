@@ -3,8 +3,7 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    position: fixed;
-    margin-top: 70%;
+    margin-top: 60px;
 }
 
 /* Move up/down in form buttons */
@@ -178,23 +177,13 @@
     border: 1px gray solid;
     font-size: 1px;
     opacity: 0;
+    width: fit-content;
     transition: font-size 1s ease-in-out, opacity 0.55s ease-in-out;
 }
 
 .formContainer__button.visible{
     font-size: var(--font-size-small) ;
     opacity: 1;
-}
-
-
-
-.formContainer__button{
-   position:fixed;
-   bottom:5%;
-   left: 0;
-   right: 0;
-   margin: auto;
-   width: fit-content;
 }
 
 .form__error{
