@@ -1,4 +1,11 @@
 import styles from "./ResultCard.module.css"
-export default function ResultCard(){
-    return(<h1 className={styles.a}>This is the resultCard component</h1>)
+export default function ResultCard(props){
+    return(
+    <section className={`${styles.resultCard__container} ${props.isFormSubmited && styles.visible}`}>
+
+
+aaaaaaa
+
+    </section>
+    )
 }

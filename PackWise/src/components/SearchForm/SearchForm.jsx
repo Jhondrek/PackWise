@@ -1,10 +1,11 @@
 import style from "./SearchForm.module.css"
+import ResultCard from "../ResultCard/ResultCard";
 import { useForm } from "react-hook-form"
 import { useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { faCircleUp, faCircleDown } from "@fortawesome/free-solid-svg-icons";
 
-export default function SearchForm(){
+export default function SearchForm(props){
 
     const [formProgressState, setFormProgressState] = useState([false, false])
 
@@ -21,12 +22,11 @@ export default function SearchForm(){
     },
 
 })
-      
-    function submitForm(data){
-        console.log("handleSubmit triggered", errors)
-    }
+      function onSubmit(data){
+        props.getFormData(data)
+      }
+    
 
-    console.log("Watch values : ", errors)
 
     async function areCurrentInputsValid() {
         
@@ -125,20 +125,20 @@ console.log(formProgressState)
 
     return(
 
-        <form onSubmit={handleSubmit(submitForm)} className={style.form}>
+        <form onSubmit={handleSubmit(onSubmit)} className={style.form}>
             <FontAwesomeIcon icon={faCircleUp} className={`${style.form__CircleUpIcon} ${formProgressState[0]  ? style.visible  : undefined}`} onClick={()=>{formProgressState[0] && showlLastInputs()}} />
            
             <section  className={`${style.form__locationsCont} ${formProgressState[0] && style.completed}` }>
                 <div>
-                    <input {...register("originCountry", {required:"Please enter a country"})} type="text"   placeholder="Origin country"  />
+                    <input  {...register("originCountry", {required:"Please enter a country"})} type="text"   placeholder="Origin country"  />
                     <p className={style.form__error}> {errors.originCountry && errors.originCountry.message}</p>
                 </div>
                 <div>
-                    <input {...register("arrivingCountry", {required:"Please enter a country"})} type="text"   placeholder="Arriving country"  />
+                    <input  {...register("arrivingCountry", {required:"Please enter a country"})} type="text"   placeholder="Arriving country"  />
                     <p className={style.form__error}> { errors.arrivingCountry && errors.arrivingCountry.message}</p>
                 </div>
                 <div>
-                    <input {...register("placeToExplore", {required:"Please enter a place to explore"})}  className={style.form__travelAreaInput}  type="text" placeholder="Place to explore" onBlur={ !formProgressState[0] ? handleOnBlur : undefined} onKeyDown={(e)=> !formProgressState[0] && handleEnterKey(e)}/>
+                    <input  {...register("placeToExplore", {required:"Please enter a place to explore"})}  className={style.form__travelAreaInput}  type="text" placeholder="Place to explore" onBlur={ !formProgressState[0] ? handleOnBlur : undefined} onKeyDown={(e)=> !formProgressState[0] && handleEnterKey(e)}/>
                     <p className={style.form__error}> {errors.placeToExplore && errors.placeToExplore.message}</p>
                     
                 </div>
@@ -183,9 +183,11 @@ console.log(formProgressState)
 
             <FontAwesomeIcon icon={faCircleDown} className={`${style.form__CircleDownIcon} ${formProgressState[1] && style.hidden}`} onClick={()=>showNextInputPairs()}/>
 
-            <button className={`${style.formContainer__button} ${formProgressState[1]=== true && style.visible }`}>Plan My Trip</button> 
-
+            <button type="submit" className={`${style.formContainer__button} ${formProgressState[1]=== true && style.visible }`}>Plan My Trip</button> 
         </form>
+
+                    
+
 
     )
 }                                             

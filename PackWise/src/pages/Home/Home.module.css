@@ -3,13 +3,21 @@ main{
    box-sizing:border-box;
    margin: none; 
    height: 100vh;
+   position:relative
+}
+.grayBg{
+   width: 100vw;
+   height: 100vh;
+   background-color: rgb(46, 46, 46);
+   position: absolute;
+   z-index: -10;
 }
 
 .formContainer{
    display: flex;
    align-items: center;
    justify-content: center;  
-   height: 100%;
+   height: 100vh;
 }
 
 .formContainer__title, .formContainer__title--secondary{
@@ -17,7 +25,7 @@ main{
    font-size: var(--font-size-primary-mobile);
    background: var(--blur-gray);
    backdrop-filter: blur(1.5px);
-   padding: 0.2rem 0.8rem;
+   padding: 0.4rem 1.3rem;
    max-width: 90%;
    border-radius: 30px;
    text-align: center;
@@ -35,46 +43,41 @@ main{
   position: fixed;
   top: 0;
   left: 0;
-  width: 100%;
-  height: 100%;
+  width: 100vw;
+  height: 100vh;
   object-fit: cover; 
   z-index: -1;
   opacity: 1;
-  transition: opacity 1.5s ease-in-out
+  transition: opacity 1s ease-in-out
 }
 
-.formContainer__Backgroundvideo.fade{
-  opacity: 0;
-}
 
-.hidden{
-   display: none;
-}
 
-.secondaryVideo{
-   position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  object-fit: cover; 
-  z-index: -2;
-}
+
+
+
 
 .formContainer__blurBackground{
-  width: fit-content;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  width: 90%;
+   position: absolute;
    margin: auto;
-  background: rgba(20, 20, 20, 0.2);
+   display: flex;
+   flex-direction: column;
+   align-items: center;
+   justify-content: center;
+   background: rgba(88, 88, 88, 0.647);
    backdrop-filter: blur(1.5px);
    border-radius: 10px;
    padding: 40px 0px;
    border: var(--blur-gray-dark) 1px solid;
    box-shadow: 0px 0px 15px  gray inset ;
    min-height: 80%;
+      width: 90%;
+   transition: width 1s ease-in-out, height 1s ease-in-out;
 }
+
+.formContainer__blurBackground.sent{
+   width: 0%;
+   height: 0%
+}
+
 
